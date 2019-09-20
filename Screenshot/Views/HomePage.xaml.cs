@@ -26,5 +26,10 @@ namespace Screenshot
         {
             this.InitializeComponent();
         }
+
+        private void NvSample_Loaded(object sender, RoutedEventArgs e)
+        {
+            nvSample.IsPaneOpen = false;
+        }
     }
 }
