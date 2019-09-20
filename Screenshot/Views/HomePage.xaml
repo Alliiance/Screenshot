@@ -5,38 +5,49 @@
     xmlns:local="using:Screenshot"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:m="using:Screenshot.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+
+    
 
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/StyleResourse.xaml"/>
+                <ResourceDictionary>
+                    <m:WebView x:Key="WebView"></m:WebView>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
 
 
-    <Grid>
-
-
-        <NavigationView x:Name="nvSample" IsPaneOpen="False" Loaded="NvSample_Loaded">
+    <Grid DataContext="{Binding Source={StaticResource WebView}}">
+        <NavigationView x:Name="nvSample">
             <NavigationView.MenuItems>
-                <NavigationViewItem Icon="Home" Content="Home" Tag="HomePage" />
+                <NavigationViewItem Icon="Home" Content="Home" Tag="HomePage"  />
             </NavigationView.MenuItems>
-            <Frame x:Name="contentFrame" HorizontalAlignment="Center" Width="640"/>
+            <Frame x:Name="contentFrame" Width="auto" Margin="20,0,0,0" HorizontalAlignment="Left">
+                <StackPanel Grid.RowSpan="2" Margin="-10,20,10,30" Width="1000">
+                    <StackPanel>
+                        <TextBlock x:Name="PageTitle" Text="Website" FontSize="24"/>
+                        <TextBlock  Text="Website"  FontSize="18" Margin="0 15 0 12"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Height="35" Width="350" TextWrapping="NoWrap" Text="{Binding Path=WebLink,Mode=TwoWay}" />
+                            <Button x:Name="GoWebBtn" Content="Go" Style="{StaticResource styleButton}" />
+                            <Button x:Name="BackwardWebBtn" Content="Backward" Style="{StaticResource styleButton}" />
+                            <Button x:Name="ForwardBtn" Content="Forward" Style="{StaticResource styleButton}" />
+                            <Button x:Name="TakeScreenshotWebBtn" Content="Take Screenshot" Style="{StaticResource styleButton}" />
+                            <TextBlock x:Name="someText" Text="{Binding Path=WebLink}" Width="100" Height="30" Foreground="Red"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <WebView Margin="0 30 0 0" Height="auto" MinHeight="600" Source="https://itvdn.com"></WebView>
+                </StackPanel>
+            </Frame>
         </NavigationView>
-        <StackPanel Grid.RowSpan="2" Margin="60 20 10 30">
-            <TextBlock x:Name="PageTitle" Text="Website" FontSize="24"/>
-            <TextBlock  Text="Website"  FontSize="18" Margin="0 15 0 12"/>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Height="40" Width="570"/>
-                <Button x:Name="GoWebBtn" Content="Go" Style="{StaticResource styleButton}" />
-                <Button x:Name="BackwardWebBtn" Content="Backward" Style="{StaticResource styleButton}" />
-                <Button x:Name="ForwardBtn" Content="Forward" Style="{StaticResource styleButton}" />
-                <Button x:Name="TakeScreenshotWebBtn" Content="Take Screenshot" Style="{StaticResource styleButton}" />
 
-            </StackPanel>
-        </StackPanel>
     </Grid>
 </Page>
