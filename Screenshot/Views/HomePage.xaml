@@ -41,10 +41,9 @@
                             <Button x:Name="BackwardWebBtn" Content="Backward" Style="{StaticResource styleButton}" />
                             <Button x:Name="ForwardBtn" Content="Forward" Style="{StaticResource styleButton}" />
                             <Button x:Name="TakeScreenshotWebBtn" Content="Take Screenshot" Style="{StaticResource styleButton}" />
-                            <TextBlock x:Name="someText" Text="{Binding Path=WebLink}" Width="100" Height="30" Foreground="Red"/>
                         </StackPanel>
                     </StackPanel>
-                    <WebView Margin="0 30 0 0" Height="auto" MinHeight="600" Source="https://itvdn.com"></WebView>
+                    <WebView Margin="0 30 0 0" Height="auto" MinHeight="600" Source="{Binding Path=WebLink}"></WebView>
                 </StackPanel>
             </Frame>
         </NavigationView>
