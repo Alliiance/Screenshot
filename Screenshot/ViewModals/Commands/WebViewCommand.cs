@@ -11,14 +11,23 @@ namespace Screenshot.ViewModals.Commands
     {
         public event EventHandler CanExecuteChanged;
 
+        ViewModalBase HomeBase { get; set; }
+        public WebViewCommand(ViewModalBase homeBase)
+        {
+            HomeBase = homeBase;
+        }
+        
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            if (parameter != null && parameter is String)
+                return true;
+            return false;
         }
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            string link = parameter as String;
+            HomeBase.GetNameLink(link);
         }
     }
 }

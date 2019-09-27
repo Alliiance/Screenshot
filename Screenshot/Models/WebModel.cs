@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Screenshot.Models
 {
-    class WebView : INotifyPropertyChanged
+    public class WebModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private string webLink;
@@ -20,6 +15,7 @@ namespace Screenshot.Models
                 OnPropertyChanged("WebLink");
             }
         }
+
 
         private void OnPropertyChanged(string link)
         {

@@ -119,9 +119,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\WebView.cs" />
+    <Compile Include="Models\WebModel.cs" />
     <Compile Include="ViewModals\Commands\WebViewCommand.cs" />
-    <Compile Include="ViewModals\WebModalBase.cs" />
+    <Compile Include="ViewModals\ViewModalBase.cs" />
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
