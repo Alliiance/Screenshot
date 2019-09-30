@@ -1,3 +1,4 @@
+using Screenshot.ViewModals;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,9 +23,15 @@ namespace Screenshot
     /// </summary>
     public sealed partial class HomePage : Page
     {
+
+        public MainViewModel ViewModel { get; }
+
         public HomePage()
         {
+            ViewModel = new MainViewModel();
+
             this.InitializeComponent();
+            DataContext = ViewModel;
         }
     }
 }

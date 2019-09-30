@@ -5,8 +5,7 @@
     xmlns:local="using:Screenshot"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:m="using:Screenshot.Models"
-    xmlns:vm="using:Screenshot.ViewModals"
+    DataContext="{x:Bind ViewModel}"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -19,15 +18,14 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/StyleResourse.xaml"/>
                 <ResourceDictionary>
-                        <m:WebModel x:Key="WebView"></m:WebModel>
-                        <vm:ViewModalBase x:Key="HomeVM"></vm:ViewModalBase>
+                    <!--<vm:HomeViewModel x:Key="VM"/>-->
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
 
 
-    <Grid DataContext="{Binding Source={StaticResource WebView}}">
+    <Grid>
         <NavigationView x:Name="nvSample">
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Home" Content="Home" Tag="HomePage"  />
@@ -39,23 +37,25 @@
                         <TextBlock  Text="Website"  FontSize="18" Margin="0 15 0 12"/>
                         <StackPanel Orientation="Horizontal">
 
-                            <TextBox x:Name="inputLink" Height="35" Width="350"/>
-                            <!--<TextBox x:Name="inputLink" Height="35" Width="350"
+                            <TextBox x:Name="webLink" Height="35" Width="350"/>
+                            <!--<TextBox x:Name="webLink" Height="35" Width="350"
                                      Text="{Binding Path=WebLink,Mode=TwoWay}" />-->
 
                             <Button x:Name="GoWebBtn" Content="Go"
-                                    Command="{Binding Path= WebViewCommand,
-                                    Source={StaticResource HomeVM}}" 
-                                    CommandParameter="{Binding ElementName= inputLink , Path=Text}"
-                                    Style="{StaticResource styleButton}" />
+                                    Command="{Binding Path=GoToWeb}"
+                                    CommandParameter="{Binding ElementName= webLink , Path=Text}"
+                                    Style="{StaticResource styleButton}"
+                                     />
 
                             <Button x:Name="BackwardWebBtn" Content="Backward" Style="{StaticResource styleButton}" />
                             <Button x:Name="ForwardBtn" Content="Forward" Style="{StaticResource styleButton}" />
                             <Button x:Name="TakeScreenshotWebBtn" Content="Take Screenshot" Style="{StaticResource styleButton}" />
 
+
                         </StackPanel>
                     </StackPanel>
-                    <WebView Margin="0 30 0 0" Height="532" MinHeight="600" Source="{Binding Path=WebLink}"/>
+                    <WebView Margin="0 30 0 0" Height="532" MinHeight="600"
+                             Source="{Binding Path=WebSite.WebLink}"/>
                 </StackPanel>
             </Frame>
         </NavigationView>

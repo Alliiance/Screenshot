@@ -119,9 +119,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\WebModel.cs" />
-    <Compile Include="ViewModals\Commands\WebViewCommand.cs" />
-    <Compile Include="ViewModals\ViewModalBase.cs" />
+    <Compile Include="Healpers\Observable.cs" />
+    <Compile Include="Models\WebSite.cs" />
+    <Compile Include="ViewModals\MainViewModel.cs" />
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -159,6 +159,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.8</Version>
+    </PackageReference>
+    <PackageReference Include="MvvmLight">
+      <Version>5.4.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />
