@@ -18,7 +18,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/StyleResourse.xaml"/>
                 <ResourceDictionary>
-                    <!--<vm:HomeViewModel x:Key="VM"/>-->
+                    
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -38,23 +38,35 @@
                         <StackPanel Orientation="Horizontal">
 
                             <TextBox x:Name="webLink" Height="35" Width="350"/>
-                            <!--<TextBox x:Name="webLink" Height="35" Width="350"
-                                     Text="{Binding Path=WebLink,Mode=TwoWay}" />-->
 
                             <Button x:Name="GoWebBtn" Content="Go"
                                     Command="{Binding Path=GoToWeb}"
                                     CommandParameter="{Binding ElementName= webLink , Path=Text}"
                                     Style="{StaticResource styleButton}"
+                                    
+
                                      />
 
-                            <Button x:Name="BackwardWebBtn" Content="Backward" Style="{StaticResource styleButton}" />
-                            <Button x:Name="ForwardBtn" Content="Forward" Style="{StaticResource styleButton}" />
+                            <Button x:Name="BackwardWebBtn" Content="Backward" Style="{StaticResource styleButton}" 
+                             IsEnabled="{Binding ElementName=WebViewPage, Path=CanGoBack}"
+                                    
+                                    Click="BackwardWebBtn_Click"/>
+                            
+                            <Button x:Name="ForwardBtn" Content="Forward"
+                                    Command="{Binding Path=GoNext}"
+                                    CommandParameter="{Binding ElementName= WebViewPage}"
+                                    Style="{StaticResource styleButton}"
+                                    IsEnabled="{Binding ElementName=WebViewPage, Path=CanGoForward}"
+                                    
+                                    Click="ForwardBtn_Click"/>
+                            
                             <Button x:Name="TakeScreenshotWebBtn" Content="Take Screenshot" Style="{StaticResource styleButton}" />
 
 
                         </StackPanel>
                     </StackPanel>
-                    <WebView Margin="0 30 0 0" Height="532" MinHeight="600"
+                    <WebView x:Name="WebViewPage"
+                             Margin="0 30 0 0" Height="532" MinHeight="600"
                              Source="{Binding Path=WebSite.WebLink}"/>
                 </StackPanel>
             </Frame>

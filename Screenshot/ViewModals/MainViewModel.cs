@@ -26,5 +26,16 @@ namespace Screenshot.ViewModals
         {
             WebSite.WebLink = link;
         }
+
+        private ICommand goNext;
+
+        public ICommand GoNext => goNext ?? (goNext = new RelayCommand<object>(GoNextPage));
+
+        private void GoNextPage(object obj)
+        {
+
+        }
+
+
     }
 }

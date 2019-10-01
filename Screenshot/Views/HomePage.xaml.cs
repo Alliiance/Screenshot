@@ -29,9 +29,20 @@ namespace Screenshot
         public HomePage()
         {
             ViewModel = new MainViewModel();
-
-            this.InitializeComponent();
+            InitializeComponent();
             DataContext = ViewModel;
+        }
+
+        private void ForwardBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (WebViewPage.CanGoForward)
+                WebViewPage.GoForward();
+        }
+
+        private void BackwardWebBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (WebViewPage.CanGoBack)
+                WebViewPage.GoBack();
         }
     }
 }
