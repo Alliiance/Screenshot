@@ -10,6 +10,7 @@ namespace Screenshot.Models
     public class WebSite : Observable
     {
         private string webLink;
+        private bool canScreenshot;
 
         public string WebLink
         {
@@ -17,6 +18,15 @@ namespace Screenshot.Models
             set
             {
                 Set(ref webLink, value);
+            }
+        }
+
+        public bool CanScreenshot
+        {
+            get { return canScreenshot; }
+            set
+            {
+                Set(ref canScreenshot, value);
             }
         }
 
